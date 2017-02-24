@@ -1,0 +1,79 @@
+/* colors.css
+ * .navy { color: #001F3F; }
+ * .blue { color: #0074D9; }
+ * .aqua { color: #7FDBFF; }
+ * .teal { color: #39CCCC; }
+ * .olive { color: #3D9970; }
+ * .green { color: #2ECC40; }
+ * .lime { color: #01FF70; }
+ * .yellow { color: #FFDC00; }
+ * .orange { color: #FF851B; }
+ * .red { color: #FF4136; }
+ * .fuchsia { color: #F012BE; }
+ * .purple { color: #B10DC9; }
+ * .maroon { color: #85144B; }
+ * .white { color: #FFFFFF; }
+ * .silver { color: #DDDDDD; }
+ * .gray { color: #AAAAAA; }
+ * .black { color: #111111; }
+ */
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+html, button, input, select, textarea,
+.pure-g [class *= "pure-u"] {
+    font-family: 'Roboto', sans-serif;
+    color: #111; /* black */
+}
+
+a {
+    color: #0074D9; /* blue */
+}
+
+#page-title {
+    padding-left: 0;
+}
+
+footer {
+    margin: 1rem 0;
+    text-align: right;
+}
+
+.container {
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+
+@media (min-width: 992px) {    
+    #layout {
+        margin-right: 20rem;
+        /* padding-left: 15rem; */
+    }
+
+    #toc {
+        top: 0;
+        position: -webkit-sticky;
+        position: sticky;
+    }
+    
+    #toc div {
+        float: right;
+        margin-right: -20rem;
+        max-width: 20rem;
+        width:100%
+    }
+}
+
+#toc {
+    padding: 0;
+}
+
+tr:hover {
+    background-color: #ddd; /* silver */
+}
+
+/* h2 { */
+/*     text-decoration: underline; */
+/* } */
