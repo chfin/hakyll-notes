@@ -27,7 +27,7 @@ import Text.Pandoc (readOrg)
 
 --------------------------------------------------------------------------------
 bibFile :: FilePath
-bibFile = "notes/notes-bib.bib"
+bibFile = "notes/bibliography.bib"
 
 cslFile :: FilePath
 cslFile = "csl/chicago-author-date.csl"

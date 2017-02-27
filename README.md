@@ -22,7 +22,8 @@ and `stack build` builds the project including all dependencies.
 
 ## Building the Site
 
-Put some org-mode files, a `notes-bib.bib`, and a `notes-bib.org` into `notes/` and run
+Put some org-mode files, a `bibliography.bib`, and a `bibliography.org`
+into a subdirectory `notes/` and run
 
 ```
 $ stack exec site build
@@ -67,11 +68,11 @@ One possibility to do this is the following:
 
 ### Keeping Notes
 
-Keep your notes in a git repository together with a `notes-bib.bib`.
+Keep your notes in a git repository together with a `bibliography.bib`.
 Use [org-ref](https://github.com/jkitchin/org-ref) to manage citations in your org files.
-Add `notes-bib.bib` either as a `bibliography` link in each org file
+Add `bibliography.bib` either as a `bibliography` link in each org file
 or set it as a global bibliography using `org-ref-default-bibliography`.
-Likewise, set `notes-bib.org` as the notes file for the bibliography.
+Likewise, set `bibliography.org` as the notes file for the bibliography.
 
 Pandoc (which Hakyll uses to convert documents) can automatically handle citations
 in org-ref notation.
