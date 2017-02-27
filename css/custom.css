@@ -74,6 +74,14 @@ tr:hover {
     background-color: #ddd; /* silver */
 }
 
+div.reference-links {
+    text-align: right;
+}
+
+div.reference-links a {
+    margin-left: 1em;
+}
+
 /* h2 { */
 /*     text-decoration: underline; */
 /* } */

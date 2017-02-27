@@ -1,0 +1,4 @@
+resolver: lts-8.2
+# limit memory usage during compilation, otherwise the server will kill ghc
+ghc-options:
+  "*": "\"+RTS -M768m -RTS\""
