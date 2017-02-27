@@ -35,13 +35,29 @@ cslFile = "csl/chicago-author-date.csl"
 paperNotesFile :: FilePath
 paperNotesFile = (replaceExtension bibFile "org")
 
+writerOptions = defaultHakyllWriterOptions {
+  writerHtml5 = True,
+  writerHTMLMathMethod = MathML Nothing
+  -- writerHTMLMathMethod = MathJax ""
+  }
+
+readerOptions = defaultHakyllReaderOptions
+
 main :: IO ()
 main = hakyll $ do
-    match "css/*" $ do
+    match "css/**.css" $ do
       route   idRoute
       compile compressCssCompiler
     match "js/*" $ do
       route   idRoute
+      compile copyFileCompiler
+
+    -- math fonts
+    match "css/**.woff" $ do
+      route idRoute
+      compile copyFileCompiler
+    match "css/**.woff2" $ do
+      route idRoute
       compile copyFileCompiler
 
     match "notes/**.bib" $ version "bib" $ compile biblioCompiler
@@ -135,14 +151,14 @@ compileBib styleFp = do
   cslI  <- load $ fromFilePath styleFp
   notes <- (unsafeCompiler $ readFile paperNotesFile)
            >>= return . Item (fromFilePath paperNotesFile)
-           >>= readPandocBiblio defaultHakyllReaderOptions cslI bibI
+           >>= readPandocBiblio readerOptions cslI bibI
            >>= return . walk (linkCitations bibI)
   let bibData  = processBib style refs
       bib      = bibliography bibData
       nEntries = splitNotes (itemBody notes)
       blocks   = (zip bib (citationIds bibData)) >>= (renderRef style nEntries)
       res      = doc (B.fromList blocks)
-  return $ writePandoc (Item bibFp res)
+  return $ writePandocWith writerOptions (Item bibFp res)
 
 asideTemplate = "<aside id=\"toc\" class=\"container\"><div>$toc$</div></aside>\
                 \<main class=\"container\">\
@@ -159,8 +175,8 @@ compileNote bibFp styleFp = do
     >>= return . walk (linkCitations bib)
     >>= return . walk incHeader
     >>= return . writePandocWith writerOpts
-  where readerOpts = defaultHakyllReaderOptions
-        writerOpts = defaultHakyllWriterOptions {
+  where readerOpts = readerOptions
+        writerOpts = writerOptions {
           writerTableOfContents = True,
           writerTemplate = Just asideTemplate
           }
