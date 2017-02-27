@@ -22,7 +22,7 @@ and `stack build` builds the project including all dependencies.
 
 ## Building the Site
 
-Put some org-mode files and a `notes-bib.bib` into `notes/` and run
+Put some org-mode files, a `notes-bib.bib`, and a `notes-bib.org` into `notes/` and run
 
 ```
 $ stack exec site build
@@ -49,6 +49,7 @@ feel free to adapt it to your needs.
 Some things to configure are:
 
 * `site.hs` as the main hakyll configuration file
+  * e.g., the variables `bibFile`, `cslFile`, and `paperNotesFile`.
 * the CSS in `css/`
 * the templates in `templates/`
 
@@ -70,6 +71,7 @@ Keep your notes in a git repository together with a `notes-bib.bib`.
 Use [org-ref](https://github.com/jkitchin/org-ref) to manage citations in your org files.
 Add `notes-bib.bib` either as a `bibliography` link in each org file
 or set it as a global bibliography using `org-ref-default-bibliography`.
+Likewise, set `notes-bib.org` as the notes file for the bibliography.
 
 Pandoc (which Hakyll uses to convert documents) can automatically handle citations
 in org-ref notation.
@@ -84,7 +86,8 @@ to the corresponding entry in the html version of the bibliography file
 Set up hakyll-notes in a directory either on your machine or on a server,
 depending on whether you keep your notes locally or in a remote git repository.
 
-Add a hook to your git repo which does the following on each commit (local) or push (remote):
+Add a hook to your notes git repo which does the following
+on each commit (local) or push (remote):
 
 1. switch to the hakyll-notes directory
 2. pull the notes repo into the `notes/` directory
@@ -95,7 +98,12 @@ Steps here are 2 and 4 depend on the details of your setup,
 important is only that you somehow get you notes into `notes/`
 and the result from `_site` to where you need it.
 
+**NOTE:**
+If you build hakyll-notes on a server, especially on shared hosting,
+you might run into problems with memory usage while compiling the depencies.
+`stack_server.yaml` adds the `+RTS -M... -RTS` to limit memory usage during compilation.
+You can use it by adding `--stack-yaml stack_server.yaml` to your stack commands.
+
 ## TODO
 
-* org-ref supports a notes file for the papers in the bibliography.
-  These notes should be displayed or linked in the HTML bibliography.
+* Somehow use `.dir-locals.el` to set the bibliography file etc. relative to the notes repo.
