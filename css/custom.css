@@ -82,6 +82,10 @@ div.reference-links a {
     margin-left: 1em;
 }
 
+div.reference-notes {
+    display: none;
+}
+
 /* h2 { */
 /*     text-decoration: underline; */
 /* } */

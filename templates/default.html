@@ -36,8 +36,10 @@
             </footer>
             <script src="/js/jquery-3.1.1.min.js" type=""></script>
             <script> $$(function () {
-                 $$("div.reference-notes").hide();
-                 $$(window.location.hash + " div.reference-notes").show();
+                 // $$("div.reference-notes").hide();
+                 if (window.location.hash) {
+                     $$(window.location.hash + " div.reference-notes").show();
+                 }
                  $$("a.reference-toggle-notes").click(function () {
                      $$(this).closest("[id|=ref]").find("div.reference-notes").toggle();
                      return false;
