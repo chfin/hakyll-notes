@@ -89,3 +89,77 @@ div.reference-notes {
 /* h2 { */
 /*     text-decoration: underline; */
 /* } */
+
+/* description lists style from clicknathan.com */
+/* dl:after {content:"";display:table;clear:both;} */
+/* dd { */
+/*     /\* padding:.5em 0; *\/ */
+/* } */
+
+dl {
+    width:100%;
+}
+
+dt, dd {
+    /* display: inline-block; */
+}
+
+dt {
+    /* max-width: 5rem; */
+    width: 8rem;
+    float: left;
+    clear: left;
+    font-weight: bold;
+    text-align: right;
+    padding-bottom: .5rem;
+    box-sizing: border-box;
+}
+
+dt:after {
+    content: ":";
+}
+
+dd {
+    padding: 0 0 .5rem .5rem;
+    box-sizing: border-box;
+    margin-left: 8rem;
+}
+
+
+/* dt, dd { */
+/*     display:inline-block; */
+/*     width:30%; */
+/* } */
+/* dt { */
+/*     text-align:right; */
+/*     font-weight:bold; */
+/*     clear:left; */
+/*     float:left; */
+/* } */
+/* dd { */
+/*     width:70%; */
+/*     padding-left:1em; */
+/*     clear:right; */
+/* } */
+/* dd + dd { */
+/*     float:right; */
+/*     clear:both; */
+/* } */
+/* dt:first-child { */
+/*     padding-top:.5em; */
+/* } */
+/* dd + dt { */
+/*    clear:both; */
+/*     padding-top:.5em; */
+/* } */
+/* dt + dt { */
+/*     width: 100%; */
+/*     float: none; */
+/*     padding: 0 70% 0 0; */
+/* } */
+/* dt + dt + dd { */
+/*     margin-top: -2em; */
+/* } */
+/* dt + dt + dd + dt { */
+/*     margin-top: 2em; */
+/* } */
